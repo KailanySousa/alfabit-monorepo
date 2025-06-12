@@ -98,3 +98,13 @@ button.tertiary:disabled {
   background: var(--ab-white);
   color: var(--ab-disabled-text);
 }
+
+.violet {
+  --ab-primary-color: #af4bfe;
+  --ab-secondary-color: #be74f9;
+  --ab-tertiary-color: #e2bdff;
+  --ab-quaternary-color: #f5e8ff;
+  --ab-hover-color: #a530ff;
+  --ab-click-color: #8e25df;
+  --ab-focus-color: #2d5bff;
+}

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 type Variant = 'primary' | 'secondary' | 'tertiary';
+type Theme = 'blue' | 'violet';
 
 @Component({
   selector: 'ab-button',
@@ -14,8 +15,9 @@ export class ButtonComponent {
   @Input() text = '';
   @Input() variant: Variant = 'primary';
   @Input() disabled = false;
+  @Input() theme: Theme = 'blue';
 
   getClasses(): string {
-    return this.variant;
+    return `${this.variant} ${this.theme}`;
   }
 }
