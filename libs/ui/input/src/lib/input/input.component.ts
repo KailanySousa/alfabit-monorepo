@@ -9,6 +9,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './input.component.css',
 })
 export class InputComponent {
+  /**
+   * Define se o input é multinha
+   */
   @Input() multiline = false;
   @Input() label = '';
   /**
