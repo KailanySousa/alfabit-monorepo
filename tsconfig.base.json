@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@alfabit-k/button": ["libs/button/src/index.ts"],
-      "@alfabit-k/ds-storybook": ["libs/storybook-host/src/index.ts"]
+      "@alfabit-k/ds-storybook": ["libs/storybook-host/src/index.ts"],
+      "@alfabit-k/input": ["libs/input/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
