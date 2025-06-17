@@ -22,6 +22,7 @@ type Story = StoryObj<TypographyComponent>;
 
 export const Primary: Story = {
   args: {
-    variant: 'title1'
+    variant: 'title1',
+    size: 'xs'
   },
 };
