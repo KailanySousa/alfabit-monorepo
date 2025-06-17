@@ -1,4 +1,5 @@
-<h1>
-  <ng-content/>
-  {{variant}}
-</h1>
+<ng-template #template>
+  <ng-content />
+</ng-template>
+
+<ng-container *ngComponentOutlet="component; content: dynamicComponentContent" />

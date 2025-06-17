@@ -1,4 +1,11 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 type Text =
@@ -16,6 +23,45 @@ type Text =
   templateUrl: './typography.component.html',
   styleUrl: './typography.component.css',
 })
-export class TypographyComponent {
+export class TypographyComponent implements OnInit {
   @Input() variant: Text = 'normal';
+  @ViewChild('template', { static: true }) template!: TemplateRef<unknown>;
+
+  component: any;
+
+  dynamicComponentContent!: any[][];
+
+  private componentsMap = {
+    title1: H1Component,
+    title2: SpanComponent,
+    title3: SpanComponent,
+    subtitle1: SpanComponent,
+    subtitle2: SpanComponent,
+    normal: SpanComponent,
+  } satisfies { [key in Text]: any };
+
+  constructor(private viewContainerRef: ViewContainerRef) {}
+
+  ngOnInit(): void {
+    this.component = this.componentsMap[this.variant];
+
+    const templateContent = this.viewContainerRef.createEmbeddedView(
+      this.template
+    ).rootNodes;
+    this.dynamicComponentContent = [templateContent];
+  }
 }
+
+@Component({
+  standalone: true,
+  styleUrls: ['./typography.component.css'],
+  template: `<h1 class="typography"><ng-content></ng-content></h1>`,
+})
+export class H1Component {}
+
+@Component({
+  standalone: true,
+  styleUrl: './typography.component.css',
+  template: ` <span class="typography"> Texto span </span> `,
+})
+export class SpanComponent {}
